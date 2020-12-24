@@ -8,8 +8,11 @@ const SearchBox = (props) => {
       id="country-select-demo"
       style={{ width: 600 }}
       options={props.countries}
-      autoHighlight
+      /*value will store what value has been selected in this picker*/
+      onChange={(events, value) => props.handleSearch(value.code)}
+      /*Displays how the options will be shown*/
       getOptionLabel={(option) => option.name}
+      autoHighlight
       renderInput={(params) => (
         <TextField
           {...params}

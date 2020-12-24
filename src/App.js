@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import TotalStats from './components/TotalStats/TotalStats';
 import SearchBox from './components/SearchBox/SearchBox';
 import BarGraph from './components/BarGraph/BarGraph';
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import TextField from "@material-ui/core/TextField";
 import './App.css';
 
 
 function App() {
-  const [searchCountry, setSearchCountry] = useState("");
+  const [searchCountry, setSearchCountry] = useState("US");
   const [covidData, setcovidData] = useState({
+    name: "",
     confirmed: 0,
     deaths: 0,
     critical: 0,
@@ -18,18 +17,19 @@ function App() {
   const [countries, setCountries] = useState([]);
 
   useEffect(()=>{
-    fetch(`https://corona-api.com/countries/AF`)
+    /*Default start in the U.S.*/
+    fetch(`https://corona-api.com/countries/US`)
     .then((response) => {
       return response.json();
     })
     .then((body) => {
       setcovidData({
+        name: body.data.name,
         confirmed: body.data.latest_data.confirmed,
         deaths: body.data.latest_data.deaths,
         critical: body.data.latest_data.critical,
         recovered: body.data.latest_data.recovered
       });
-      console.log(covidData);
     });
   }, [])
 
@@ -45,24 +45,31 @@ function App() {
   }, [])
 
   let handleSearch = (countryName) => {
+    console.log("Printing country code")
     /*Set country name to what was searched*/
     setSearchCountry(countryName)
     /*Get specific country data*/
-    fetch(`https://api.covid19api.com/`)
+    fetch(`https://corona-api.com/countries/${countryName}`)
     .then((response) => {
       return response.json();
     })
     .then((body) => {
-      setcovidData(body);
+      /*Reset data to different country statistics*/
+      setcovidData({
+        name: body.data.name,
+        confirmed: body.data.latest_data.confirmed,
+        deaths: body.data.latest_data.deaths,
+        critical: body.data.latest_data.critical,
+        recovered: body.data.latest_data.recovered
+      });
     });
-    console.log("HAPPEN")
   }
 
   return (
     <div>
       <h1>Covid Tracker</h1>
       <TotalStats covidData = {covidData} />
-      <SearchBox onSearch = {() => handleSearch()} countries = {countries}/>
+      <SearchBox handleSearch = {handleSearch} countries = {countries} searchCountry = {searchCountry}/>
       <BarGraph covidData = {covidData}/>
     </div>
   )
