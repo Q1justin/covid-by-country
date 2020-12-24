@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import StatBox from './StatBox/StatBox';
 
-const totalStats = (props) => {
+const TotalStats = (props) => {
   return (
     <div>
     <p>Where All Stats Will Go</p>
@@ -9,4 +9,4 @@ const totalStats = (props) => {
   )
 }
 
-export default totalStats;
+export default TotalStats;

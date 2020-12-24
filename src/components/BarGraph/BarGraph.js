@@ -1,35 +1,20 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { Line, Bar } from "react-chartjs-2";
 
 const BarGraph = (props) => {
-  const [graphData, setGraphData] = useState({
-    confirmed: "",
-    recovered: "",
-    deaths: "",
-  });
-  const [chart, setChart] = useState([]);
-
-
-/*Fetch global data on # of people confirmed, recovered, and dead from covid*/
-  useEffect(() => {
-      fetch("https://covid19.mathdro.id/api")
-        .then((response) => {
-          return response.json();
-        })
-        .then((body) => {
-          let datas = {
-            confirmed: body.confirmed.value,
-            recovered: body.recovered.value,
-            deaths: body.deaths.value,
-          };
-          setGraphData(datas);
-        });
-    }, []);
-    console.log(graphData)
-
+  const countryChart = {
+    labels: ["Confirmed", "Deaths", "Critical", "Recovered"],
+    datasets: [
+      {
+        label: ["Confirmed", "Deaths", "Critical", "Recovered"],
+        data: [props.covidData.confirmed, props.covidData.deaths, props.covidData.critical, props.covidData.recovered],
+        backgroundColor: ["#ffffff", "#fc6978", "#69fca4", "#69fca4"],
+      },
+    ],
+  };
   return (
     <div>
-    Where Bar Graph will Go
+    <Bar data={countryChart} />
     </div>
   )
 }

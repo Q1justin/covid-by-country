@@ -1,15 +1,27 @@
-import React, {useState, useEffect} from "react";
-// import TextField from "@material-ui/core/TextField";
-// import Autocomplete from "@material-ui/lab/Autocomplete";
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const SearchBox = (props) => {
-  const [input, setInput] = useState("");
-  const [country, setCountry] = useState([]);
-
   return (
-    <div>
-    <p>Where Serach Box Will Go</p>
-    </div>
+    <Autocomplete
+      id="country-select-demo"
+      style={{ width: 600 }}
+      options={props.countries}
+      autoHighlight
+      getOptionLabel={(option) => option.name}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label="Choose a Country"
+          variant="outlined"
+          inputProps={{
+            ...params.inputProps,
+            autoComplete: "new-password", // disable autocomplete and autofill
+          }}
+        />
+      )}
+    />
   )
 }
 
