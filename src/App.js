@@ -6,7 +6,6 @@ import './App.css';
 
 
 function App() {
-  const [searchCountry, setSearchCountry] = useState("US");
   const [covidData, setcovidData] = useState({
     name: "",
     confirmed: 0,
@@ -31,6 +30,7 @@ function App() {
         recovered: body.data.latest_data.recovered
       });
     });
+    /*Give second argument as this should only run once*/
   }, [])
 
   /*Get a list of countries to display as a suggestion*/
@@ -47,7 +47,6 @@ function App() {
   let handleSearch = (countryName) => {
     console.log("Printing country code")
     /*Set country name to what was searched*/
-    setSearchCountry(countryName)
     /*Get specific country data*/
     fetch(`https://corona-api.com/countries/${countryName}`)
     .then((response) => {
@@ -69,7 +68,7 @@ function App() {
     <div>
       <h1>Covid Tracker</h1>
       <TotalStats covidData = {covidData} />
-      <SearchBox handleSearch = {handleSearch} countries = {countries} searchCountry = {searchCountry}/>
+      <SearchBox handleSearch = {handleSearch} countries = {countries} covidData = {covidData}/>
       <BarGraph covidData = {covidData}/>
     </div>
   )

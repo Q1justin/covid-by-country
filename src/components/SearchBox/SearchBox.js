@@ -9,7 +9,11 @@ const SearchBox = (props) => {
       style={{ width: 600 }}
       options={props.countries}
       /*value will store what value has been selected in this picker*/
-      onChange={(events, value) => props.handleSearch(value.code)}
+      value = {props.covidData}
+      onChange={(events, value) => {
+        console.log(value);
+        props.handleSearch(value.code)
+      }}
       /*Displays how the options will be shown*/
       getOptionLabel={(option) => option.name}
       autoHighlight
