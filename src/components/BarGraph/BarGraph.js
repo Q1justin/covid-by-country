@@ -1,5 +1,6 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
+import classes from './BarGraph.module.css';
 
 const BarGraph = (props) => {
   const countryChart = {
@@ -13,7 +14,7 @@ const BarGraph = (props) => {
     ],
   };
   return (
-    <div>
+    <div className = {classes.BarGraph}>
     <Bar data={countryChart} />
     </div>
   )

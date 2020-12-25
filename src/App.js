@@ -15,6 +15,7 @@ function App() {
   });
   const [countries, setCountries] = useState([]);
 
+  /*Should only run on initial load*/
   useEffect(()=>{
     /*Default start in the U.S.*/
     fetch(`https://corona-api.com/countries/US`)
@@ -30,11 +31,7 @@ function App() {
         recovered: body.data.latest_data.recovered
       });
     });
-    /*Give second argument as this should only run once*/
-  }, [])
-
-  /*Get a list of countries to display as a suggestion*/
-  useEffect(()=>{
+    /*Get list of countries*/
     fetch(`https://corona-api.com/countries`)
     .then((response) => {
       return response.json();
@@ -42,10 +39,11 @@ function App() {
     .then((body) => {
       setCountries(body.data);
     });
+    /*Give second argument as this should only run once*/
   }, [])
 
+
   let handleSearch = (countryName) => {
-    console.log("Printing country code")
     /*Set country name to what was searched*/
     /*Get specific country data*/
     fetch(`https://corona-api.com/countries/${countryName}`)
