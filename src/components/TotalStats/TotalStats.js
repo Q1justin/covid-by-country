@@ -3,7 +3,6 @@ import StatBox from './StatBox/StatBox';
 import classes from './TotalStats.module.css'
 
 const TotalStats = (props) => {
-  console.log(props.covidData)
   return (
     <div className = {classes.layoutColumn}>
       <StatBox displayData = {props.covidData.confirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} category = {"Confirmed"}/>

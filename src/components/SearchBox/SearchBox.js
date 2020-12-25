@@ -8,10 +8,13 @@ const SearchBox = (props) => {
       id="country-select-demo"
       style={{ width: 600 }}
       options={props.countries}
-      value = {props.covidData}
       onChange={(events, value) => {
+        if(value !== null){
           props.handleSearch(value.code)
-
+        }
+        else{
+          /*Some refresh to reset the graph*/
+        }
       }}
       /*Displays how the options will be shown*/
       getOptionLabel={(option) => option.name}
