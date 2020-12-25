@@ -13,9 +13,10 @@ const BarGraph = (props) => {
       },
     ],
   };
+  let data = props.showData ? <Bar data={countryChart} /> : null
   return (
     <div className = {classes.BarGraph}>
-    <Bar data={countryChart} />
+      {data}
     </div>
   )
 }

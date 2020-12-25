@@ -4,7 +4,6 @@ import SearchBox from './components/SearchBox/SearchBox';
 import BarGraph from './components/BarGraph/BarGraph';
 import './App.css';
 
-
 function App() {
   const [covidData, setcovidData] = useState({
     name: "",
@@ -14,6 +13,7 @@ function App() {
     recovered: 0
   });
   const [countries, setCountries] = useState([]);
+  const [showData, setShowData] = useState(false);
 
   /*Should only run on initial load*/
   useEffect(()=>{
@@ -44,6 +44,10 @@ function App() {
 
 
   let handleSearch = (countryName) => {
+    /*Show data but only run on initial change*/
+    if(!showData){
+      setShowData(true)
+    }
     /*Set country name to what was searched*/
     /*Get specific country data*/
     fetch(`https://corona-api.com/countries/${countryName}`)
@@ -62,12 +66,17 @@ function App() {
     });
   }
 
+  /*Change in plans -> show totalStats and graph only on search*/
   return (
     <div>
-      <h1>Covid Tracker</h1>
-      <TotalStats covidData = {covidData} />
-      <SearchBox handleSearch = {handleSearch} countries = {countries} covidData = {covidData}/>
-      <BarGraph covidData = {covidData}/>
+        <div >
+          <h1>Covid Tracker</h1>
+          <TotalStats covidData = {covidData} showData = {showData}/>
+        </div>
+        <div>
+          <SearchBox handleSearch = {handleSearch} countries = {countries} covidData = {covidData}/>
+          <BarGraph covidData = {covidData} showData = {showData}/>
+        </div>
     </div>
   )
 }
