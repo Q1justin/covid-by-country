@@ -5,6 +5,7 @@ const StatBox = (props) => {
   return (
     <div className = {classes.box}>
     <h1>{props.category}</h1>
+    <h2>{props.displayData}</h2>
     </div>
   )
 }

@@ -8,7 +8,7 @@ const BarGraph = (props) => {
       {
         label: ["Confirmed", "Deaths", "Critical", "Recovered"],
         data: [props.covidData.confirmed, props.covidData.deaths, props.covidData.critical, props.covidData.recovered],
-        backgroundColor: ["#ffffff", "#fc6978", "#69fca4", "#69fca4"],
+        backgroundColor: ["#D3D3D3", "#fc6978", "#FFD700", "#69fca4"],
       },
     ],
   };
