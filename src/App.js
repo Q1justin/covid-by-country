@@ -69,12 +69,12 @@ function App() {
   /*Change in plans -> show totalStats and graph only on search*/
   return (
     <div>
-        <div >
-          <h1>Covid Tracker</h1>
-          <TotalStats covidData = {covidData} showData = {showData}/>
-        </div>
-        <div>
+        <div class = "top">
+          <h1 class = "upper">Covid Tracker</h1>
           <SearchBox handleSearch = {handleSearch} countries = {countries} covidData = {covidData}/>
+        </div>
+        <div class = "bottom">
+          <TotalStats covidData = {covidData} showData = {showData}/>
           <BarGraph covidData = {covidData} showData = {showData}/>
         </div>
     </div>
