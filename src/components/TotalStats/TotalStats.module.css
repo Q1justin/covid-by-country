@@ -1,6 +1,7 @@
 .layoutColumn{
   display: flex;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 10px;
   float:left;
+  width: 100%;
 }

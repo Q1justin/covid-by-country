@@ -4,15 +4,31 @@ import classes from './BarGraph.module.css';
 
 const BarGraph = (props) => {
   const countryChart = {
-    labels: ["Confirmed", "Deaths", "Critical", "Recovered"],
+    labels: ["Confirmed"],
     datasets: [
       {
-        label: ["Confirmed", "Deaths", "Critical", "Recovered"],
-        data: [props.covidData.confirmed, props.covidData.deaths, props.covidData.critical, props.covidData.recovered],
-        backgroundColor: ["#D3D3D3", "#fc6978", "#FFD700", "#69fca4"],
+        label: "Confirmed",
+        data: [props.covidData.confirmed],
+        backgroundColor: "#D3D3D3"
+      },
+      {
+        label: "Deaths",
+        data: [props.covidData.deaths],
+        backgroundColor: "#fc6978"
+      },
+      {
+        label: "Critical",
+        data: [props.covidData.critical],
+        backgroundColor: "#FFD700"
+      },
+      {
+        label: "Recovered",
+        data: [props.covidData.recovered],
+        backgroundColor: "#69fca4"
       },
     ],
   };
+  console.log(countryChart.datasets)
   let data = props.showData ? <Bar data={countryChart} /> : null
   return (
     <div className = {classes.BarGraph}>
