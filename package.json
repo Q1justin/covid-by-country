@@ -23,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "deploy": "gh-pages -b master -d build",
+    "predeploy": "npm run build",
+ "deploy": "gh-pages -d build",
+    “homepage”: “http://Q1justin.github.io/covid-by-country"
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
