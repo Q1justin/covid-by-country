@@ -2,7 +2,7 @@
   "name": "covid-by-country",
   "version": "0.1.0",
   "private": true,
-"homepage": “http://Q1justin.github.io/covid-by-country",
+  "homepage": "http://Q1justin.github.io/covid-by-country",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
@@ -25,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
- "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
