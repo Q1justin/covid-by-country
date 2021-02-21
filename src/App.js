@@ -34,7 +34,6 @@ function App() {
       setShowData(true)
     }
     /*Set country name to what was searched*/
-    /*Get specific country data*/
     fetch(`https://corona-api.com/countries/${countryName}`)
     .then((response) => {
       return response.json();
