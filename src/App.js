@@ -17,20 +17,6 @@ function App() {
 
   /*Should only run on initial load*/
   useEffect(()=>{
-    /*Default start in the U.S.*/
-    fetch(`https://corona-api.com/countries/US`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((body) => {
-      setcovidData({
-        name: body.data.name,
-        confirmed: body.data.latest_data.confirmed,
-        deaths: body.data.latest_data.deaths,
-        critical: body.data.latest_data.critical,
-        recovered: body.data.latest_data.recovered
-      });
-    });
     /*Get list of countries*/
     fetch(`https://corona-api.com/countries`)
     .then((response) => {
@@ -41,7 +27,6 @@ function App() {
     });
     /*Give second argument as this should only run once*/
   }, [])
-
 
   let handleSearch = (countryName) => {
     /*Show data but only run on initial change*/
